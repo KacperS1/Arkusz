@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biuro turystyczne</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h1>Rezerwacja wycieczek</h1>
+    </header>
+
+        <main>
+
+                <section id="lewa">
+
+                    <nav>
+                        <input type="button" value="Uczestnik" onclick="uczestnik()" class="przycisk" id="Uczestnik">
+                        <input type="button" value="Rezerwacja" onclick="rezerwacja()" class="przycisk" id="Rezerwacja">
+                    </nav>
+                    
+                    <section id="lewaa">
+
+                        <section id="jeden">
+                            <h2>Dane Klienta</h2>
+
+                            <img src="osoba.png" alt="Klient">
+
+                            <br><br>
+
+                            <label for="imie">Imię</label>
+                            <input type="text" id="imie">
+
+                            <br>
+
+                            <label for="nazwisko">Nazwisko</label>
+                            <input type="text" id="nazwisko">
+
+                            <p><a href="wycieczki.html">Do strony głównej</a></p>
+
+                        </section>
+
+                        <section id="dwa">
+                            <h2>Dane rezerwacji</h2>
+                            
+                                <span onclick="poprzedni()">&laquo;</span>
+                                <img src="1.jpg" id="zdjecieGlowne" alt="Wycieczka">
+                                <span onclick="nastepny()">&raquo;</span>
+
+                            <h4>Barcelona</h4>
+                            <label for="osoby">Liczba osób</label>
+                            <input type="number" min="1" max="4" placeholder="2" disabled id="osoby">
+
+                            <br>
+
+                            <label for="miejsce">Miejsce wylotu:</label>
+                            <select id="miejsce" disabled>
+                                <option>Warszawa</option>
+                                <option>Kraków</option>
+                                <option>Wrocław</option>
+                            </select>
+
+                            <br>
+
+                            <input type="radio" id="Śniadania" name="opcja" disabled checked>
+                            <label for="Śniadania">Śniadania</label>
+
+                            <input type="radio" id="Śniadania_i_obiadokolacje" name="opcja" disabled>
+                            <label for="Śniadania_i_obiadokolacje">Śniadania i obiadokolacje</label>
+
+                            <input type="radio" id="All_inclusive" name="opcja" disabled>
+                            <label for="All_inclusive">All inclusive</label>
+
+                            <input type="button" value="Sprawdź cenę" class="przycisk">
+                        </section>
+
+                    </section>
+                </section>        
+                
+
+                <aside>
+                    <img src="1.jpg" class="aside">
+                    <img src="2.jpg" class="aside">
+                    <img src="3.jpg" class="aside">
+                    <img src="1.jpg" class="aside">
+                    <img src="2.jpg" class="aside">
+                    <img src="3.jpg" class="aside">
+                    <img src="1.jpg" class="aside">
+                    <img src="2.jpg" class="aside">
+                    <img src="3.jpg" class="aside">
+                </aside>
+                
+        </main>
+
+        <footer>
+            <p>Autor strony: <em>Kacper Świstek</em></p>
+            
+        </footer>
+</body>
+
+    <script>
+    let aktualneMiejsce = "Barcelona";
+
+        document.getElementById("Uczestnik").style.backgroundColor = "DodgerBlue";
+        document.getElementById("Rezerwacja").style.backgroundColor = "SkyBlue";
+
+        function uczestnik() {
+            document.getElementById("Uczestnik").style.backgroundColor = "DodgerBlue";
+            document.getElementById("Rezerwacja").style.backgroundColor = "SkyBlue";
+
+            document.getElementById("imie").disabled = false;
+            document.getElementById("nazwisko").disabled = false;
+
+            document.getElementById("osoby").disabled = true;
+            document.getElementById("miejsce").disabled = true;
+            document.getElementById("Śniadania").disabled = true;
+            document.getElementById("Śniadania_i_obiadokolacje").disabled = true;
+            document.getElementById("All_inclusive").disabled = true;
+        }
+
+        function rezerwacja() {
+            document.getElementById("Uczestnik").style.backgroundColor = "SkyBlue";
+            document.getElementById("Rezerwacja").style.backgroundColor = "DodgerBlue";
+
+            document.getElementById("imie").disabled = true;
+            document.getElementById("nazwisko").disabled = true;
+
+            document.getElementById("osoby").disabled = false;
+            document.getElementById("miejsce").disabled = false;
+            document.getElementById("Śniadania").disabled = false;
+            document.getElementById("Śniadania_i_obiadokolacje").disabled = false;
+            document.getElementById("All_inclusive").disabled = false;
+        }
+
+        function nastepny() {
+            if (aktualneMiejsce === "Barcelona") {
+                aktualneMiejsce = "Rzym";
+                document.getElementById("zdjecieGlowne").src = "2.jpg";
+                document.querySelector("#dwa h4").textContent = "Rzym";
+            } 
+            else if (aktualneMiejsce === "Rzym") {
+                aktualneMiejsce = "Londyn";
+                document.getElementById("zdjecieGlowne").src = "3.jpg";
+                document.querySelector("#dwa h4").textContent = "Londyn";
+            } 
+            else if (aktualneMiejsce === "Londyn") {
+                aktualneMiejsce = "Barcelona";
+                document.getElementById("zdjecieGlowne").src = "1.jpg";
+                document.querySelector("#dwa h4").textContent = "Barcelona";
+            }
+        }
+
+        function poprzedni() {
+            if (aktualneMiejsce === "Barcelona") {
+                aktualneMiejsce = "Londyn";
+                document.getElementById("zdjecieGlowne").src = "3.jpg";
+                document.querySelector("#dwa h4").textContent = "Londyn";
+            } 
+            else if (aktualneMiejsce === "Londyn") {
+                aktualneMiejsce = "Rzym";
+                document.getElementById("zdjecieGlowne").src = "2.jpg";
+                document.querySelector("#dwa h4").textContent = "Rzym";
+            } 
+            else if (aktualneMiejsce === "Rzym") {
+                aktualneMiejsce = "Barcelona";
+                document.getElementById("zdjecieGlowne").src = "1.jpg";
+                document.querySelector("#dwa h4").textContent = "Barcelona";
+            }
+        }
+    </script>
+</html>
